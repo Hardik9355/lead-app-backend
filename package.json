@@ -1,0 +1,27 @@
+{
+  "name": "leadapplication",
+  "version": "1.0.0",
+  "description": "Serverless aws-nodejs-typescript template",
+  "scripts": {
+    "deploy": "sls deploy",
+    "local": "serverless offline"
+  },
+  "type": "module",
+  "dependencies": {
+    "@types/aws-lambda": "^8.10.145",
+    "@types/node": "^22.5.1",
+    "aws-lambda": "^1.0.7",
+    "axios": "^1.7.7",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.6.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "serverless": "^3.0.0",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-esbuild": "^1.40.0",
+    "serverless-offline": "^13.3.0"
+  }
+}

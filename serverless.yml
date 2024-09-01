@@ -1,0 +1,106 @@
+service: lead-application-app
+package:
+  individually: true
+frameworkVersion: "3"
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  environment:
+    MONGOURI: ${env:MONGOURI}
+    SECRETKEY: ${env:SECRETKEY}
+    HCAPTCHA_SECRET_KEY: ${env:HCAPTCHA_SECRET_KEY}
+
+plugins:
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    host: 0.0.0.0
+    httpPort: 4000
+  bundle:
+    packager: yarn
+    paths:
+      - src/controllers/**
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: /hello
+          method: get
+          cors:
+            origin: "*"
+         
+  createUser:
+    handler: src/controllers/user.createUser
+    events:
+      - http:
+          path: /createuser
+          method: post
+          cors:
+            origin: "*"
+        
+  loginUser:
+    handler: src/controllers/user.loginUser
+    timeout: 600
+    events:
+      - http:
+          path: /loginuser
+          method: post
+          cors:
+            origin: "*"
+         
+  createLead:
+    handler: src/controllers/lead.createLeadDetails
+    timeout: 600
+    events:
+      - http:
+         path: /createlead
+         method: post
+        cors:
+            origin: "*"
+           
+  getLeadDetails:
+    handler: src/controllers/lead.getLeadDetails
+    timeout: 600
+    events:
+      - http:
+         path: /getlead
+         method: get
+        cors:
+            origin: "*"
+            
+  updateLeadDetails:
+    handler: src/controllers/lead.updateLeadDetails
+    timeout: 600
+    events:
+      - http:
+         path: /updatelead
+         method: put
+        cors:
+            origin: "*"
+           
+  deleteLeadDetails:
+    handler: src/controllers/lead.deleteLeadDetails
+    timeout: 600
+    events:
+      - http:
+         path: /deletelead/{id}
+         method: delete
+         cors:
+            origin: "*"
+            
+  updateUserPassword:
+    handler: src/controllers/user.updateUserPassword
+    timeout: 600
+    events:
+      - http:
+         path: /updatepassword
+         method: put
+         cors:
+            origin: "*"
+           
+  
