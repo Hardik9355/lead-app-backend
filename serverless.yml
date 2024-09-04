@@ -60,7 +60,7 @@ functions:
       - http:
          path: /createlead
          method: post
-        cors:
+         cors:
             origin: "*"
            
   getLeadDetails:
@@ -70,7 +70,7 @@ functions:
       - http:
          path: /getlead
          method: get
-        cors:
+         cors:
             origin: "*"
             
   updateLeadDetails:
@@ -80,7 +80,7 @@ functions:
       - http:
          path: /updatelead
          method: put
-        cors:
+         cors:
             origin: "*"
            
   deleteLeadDetails:
